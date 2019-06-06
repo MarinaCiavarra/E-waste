@@ -30,7 +30,7 @@ class Championship extends Component{
             });
             const users = await this.user.addressToUsers(this.state.members[i]);
             if(users[2] === false) {
-                /*Only normal user enter the Championship*/
+                /*Only standard user enter the Championship*/
                 this.setState({
                     users: [...this.state.users, users]
                 });
