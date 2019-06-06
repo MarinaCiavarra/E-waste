@@ -26,14 +26,14 @@ contract DeviceFactory{
     }
     
     function _createDevice(string memory _type, string memory _manufacturer, string memory _serial, string memory _model) internal {
-    string memory _hid = string(abi.encodePacked(_manufacturer,"-", _serial,"-", _model));
-    uint256 deviceId = devices.length;
-    uint id = devices.push(Device(_type, 1, _hid, deviceId)) - 1;
-    devices[id].owners[0] = msg.sender;
-    noDevices = devices.length;
-    deviceToOwner[id] = msg.sender;
-    ownerDeviceCount[msg.sender] = ownerDeviceCount[msg.sender].add(1);
-    emit NewDevice(_type, _hid, msg.sender);
+        string memory _hid = string(abi.encodePacked(_manufacturer,"-", _serial,"-", _model));
+        uint256 deviceId = devices.length;
+        uint id = devices.push(Device(_type, 1, _hid, deviceId)) - 1;
+        devices[id].owners[0] = msg.sender;
+        noDevices = devices.length;
+        deviceToOwner[id] = msg.sender;
+        ownerDeviceCount[msg.sender] = ownerDeviceCount[msg.sender].add(1);
+        emit NewDevice(_type, _hid, msg.sender);
   }
   
   /*The HID is the concatenation of, in the exact order: 
@@ -42,6 +42,6 @@ contract DeviceFactory{
         -the model
     joined with hyphens*/
   function insertNewDevice (string memory _type, string memory _manufacturer, string memory _serial, string memory _model) public {
-    _createDevice(_type, _manufacturer, _serial, _model);
+        _createDevice(_type, _manufacturer, _serial, _model);
   }
 }
